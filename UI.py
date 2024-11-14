@@ -227,26 +227,7 @@ def main():
             if not aithinking:
                 aithinking = True
                 print("Finding best move")
-                returnqueue = Queue()
-                if difficulty==1:
-                    print("Beginner mode")
-                    movefinderprocess = Process(target=AI.findbestmovebeginner, args=(gb, validmoves, returnqueue))
-                if difficulty==2:
-                    print("Easy mode")
-                    movefinderprocess = Process(target=AI.bfs, args=(gb, validmoves, returnqueue))
-                if difficulty==3:
-                    print("Medium mode")
-                    movefinderprocess = Process(target=AI.findbestmovemedium, args=(gb, validmoves, returnqueue))
-                if difficulty==4:
-                    print("Hard mode")
-                    movefinderprocess = Process(target=AI.findbestmovehard, args=(gb, validmoves, returnqueue))
-                movefinderprocess.start()
-            if not movefinderprocess.is_alive():
-                print("Got it")
-                aimove = returnqueue.get()
-                if aimove is None:
-                    print("from random move")
-                    aimove = AI.findrandommove(validmoves)
+                # Ai part of the code
                 gb.makemove(aimove)
                 movemade = True
                 animate = True
